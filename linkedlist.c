@@ -1,41 +1,124 @@
-//TODO: Remember to add include statement here. 
+#include "linkedlist.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 ll_node *ll_head(ll_node *list){
-  //TODO: Implement this function, see header file for description
-  //TODO: Update return statement. 
-  return NULL; 
+  //TODO: Implement this function, see header file for descriptio
+	if(list == NULL){
+		return NULL;
+	}
+	while(list-> prev != NULL){
+		list-> prev;	
+	}
+	return *list;
 }
 
 
 ll_node *ll_tail(ll_node *list){
-  //TODO: Implement this function, see header file for description
+  //TODO: Implement this function, see header file for descriptio
+	if(list == NULL){
+		return NULL;
+	}
+	while(list -> next != NULL) {
+		list -> next;
+	}
   //TODO: Update return statement. 
-  return NULL; 
+	return *list;
 }
 
 
 unsigned long ll_length(ll_node *list){
   //TODO: Implement this function, see header file for description
-  //TODO: Update return statement. 
-  return NULL; 
+	unsigned long count = 1;
+	list = ll_head(list)
+	while(list->next != NULL){
+		current = current ->next;
+		count+ =1;
+	}
+  //TODO: Update return statement.  
+	return count;
 }
 
 ll_node *ll_find(ll_node *list, int value){
   //TODO: Implement this function, see header file for description
-  //TODO: Update return statement. 
-  return NULL; 
+	if(list == NULL){
+		return NULL;
+	}
+	unsigned long x = ll_length(list);
+	for(size_t i =0; i < size; i++){
+		if(list-> value == value){
+			return value;
+		}
+		list = list-> next;
+	}	
+	return NULL;
+  //TODO: Update return statement.  
 }
 
 
 ll_node *ll_remove(ll_node *list){
   //TODO: Implement this function, see header file for description
-  //TODO: Update return statement. 
-  return NULL; 
+	if(list == NULL){
+		return NULL;
+	}
+	if(!list-> prev && !list-> next){
+		free(list);
+		return NULL;	
+	}
+	else if(!list->prev){
+		list -> next -> prev = NULL;
+		ll_node *temp = list -> next;
+		free(list);
+		return temp;
+	}
+	else if(!list -> next){
+		if(list -> prev){
+			list ->prev = NULL;
+		}
+		free(list);
+		return NULL;
+	}
+	list->prev->next = list->next;
+	list->next->prev = list->prev;
+	ll_node *temp = list->prev->next;
+	free(list);
+	return temp;
+ //TODO: Update return statement.  
 }
 
 
 ll_node *ll_insert(int value, ll_node *list, int before){  
 //TODO: Implement this function, see header file for description
+	ll_node *i = (ll_node*)malloc(sizeof(ll_node));
+	i->value = value;
+	if(!list){
+		i->prev = NULL;
+		i->next = NULL;
+		return i;
+	}
+	else if(!before){
+		i->prev = list;
+		if(!list -> next){
+			insert-> next = NULL;
+		}
+		else{
+			i->next = list->next;
+			list->next->prev = i;
+		}
+		list->next = i;
+	}
+	else{
+		if(!list->prev){
+			i->prev =NULL;
+		}
+		else{
+			i->prev = list->prev;
+			list->prev->next = i;
+		}
+		i->next = list;
+		list->prev = i;
+	}
+	return i;
 //TODO: Update return statement. 
 return NULL; 
   
