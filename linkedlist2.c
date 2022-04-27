@@ -10,7 +10,7 @@ ll_node *ll_head(ll_node *list){
 	while(list-> prev != NULL){
 		list-> prev;	
 	}
-	return list;
+	return *list;
 }
 
 
@@ -23,7 +23,7 @@ ll_node *ll_tail(ll_node *list){
 		list -> next;
 	}
   //TODO: Update return statement. 
-	return list;
+	return *list;
 }
 
 
@@ -32,8 +32,8 @@ unsigned long ll_length(ll_node *list){
 	unsigned long count = 1;
 	list = ll_head(list);
 	while(list->next != NULL){
-		list = list ->next;
-		count+=1;
+		current = current ->next;
+		count+ =1;
 	}
   //TODO: Update return statement.  
 	return count;
@@ -45,7 +45,7 @@ ll_node *ll_find(ll_node *list, int value){
 		return NULL;
 	}
 	unsigned long x = ll_length(list);
-	for(size_t i =0; i < x; i++){
+	for(size_t i =0; i < size; i++){
 		if(list-> value == value){
 			return value;
 		}
